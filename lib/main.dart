@@ -73,8 +73,11 @@ class MainApp extends StatelessWidget {
                 return const AdminScreen();
               }
             }
+            if (state.status == AuthenticationStatus.unauthenticated) {
+              return LoginScreen();
+            }
 
-            return LoginScreen();
+            return const SplashScreen();
           },
         ),
       ),
