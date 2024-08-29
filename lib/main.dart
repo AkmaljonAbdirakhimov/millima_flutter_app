@@ -1,16 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:millima/features/authentication/bloc/authentication_bloc.dart';
-import 'package:millima/features/authentication/views/login_screen.dart';
-import 'package:millima/features/home/views/home_screen.dart';
-import 'package:millima/features/user/bloc/user_bloc.dart';
 import 'package:millima/firebase_options.dart';
-import 'package:millima/utils/locator.dart';
-import 'package:millima/utils/providers.dart';
 
-import 'utils/helpers/dialogs.dart';
+import 'features/features.dart';
+import 'utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,14 +61,17 @@ class MainApp extends StatelessWidget {
                   );
               }
             }
-
-            if (state.status == AuthenticationStatus.authenticated) {
-              context.read<UserBloc>().add(GetCurrentUserEvent());
-            }
           },
           builder: (context, state) {
             if (state.status == AuthenticationStatus.authenticated) {
-              return const HomeScreen();
+              final userRole = state.user!.role.name;
+              if (userRole == "student") {
+                return const UserScreen();
+              } else if (userRole == 'teacher') {
+                return const TeacherScreen();
+              } else if (userRole == 'admin') {
+                return const AdminScreen();
+              }
             }
 
             return LoginScreen();

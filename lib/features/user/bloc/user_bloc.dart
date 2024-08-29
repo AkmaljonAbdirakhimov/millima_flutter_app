@@ -1,29 +1,43 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:millima/data/models/models.dart';
-import 'package:millima/domain/user_repository/user_repository.dart';
+import 'package:millima/data/services/services.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final UserRepository _userRepository;
-
-  UserBloc({
-    required UserRepository userRepository,
-  })  : _userRepository = userRepository,
-        super(const UserState()) {
-    on<GetCurrentUserEvent>(_onGetCurrentUser);
+  UserBloc() : super(UserInitialState()) {
+    on<GetUserEvent>(_onGetUser);
+    on<UpdateUserEvent>(_updateUser);
   }
 
-  void _onGetCurrentUser(GetCurrentUserEvent event, emit) async {
-    emit(state.copyWith(isLoading: true));
-
+  Future<void> _onGetUser(GetUserEvent event, emit) async {
+    emit(UserLoadingState());
+    final UserService userService = UserService();
     try {
-      final user = await _userRepository.getUser();
-      emit(state.copyWith(user: user, isLoading: false));
+      final User userModel = await userService.getUser();
+
+      emit(UserLoadedState(user: userModel));
     } catch (e) {
-      emit(state.copyWith(error: e.toString(), isLoading: false));
+      emit(UserErrorState(error: e.toString()));
+    }
+  }
+
+  Future<void> _updateUser(UpdateUserEvent event, emit) async {
+    emit(UserLoadingState());
+    final UserService userService = UserService();
+    try {
+      await userService.updateProfile(
+          name: event.name,
+          email: event.email,
+          phone: event.phone,
+          photo: event.phote);
+      add(GetUserEvent());
+    } catch (e) {
+      emit(UserErrorState(error: e.toString()));
     }
   }
 }

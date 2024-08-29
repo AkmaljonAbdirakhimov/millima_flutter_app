@@ -3,7 +3,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:millima/data/models/models.dart';
+import 'package:millima/data/services/user/user_service.dart';
 import 'package:millima/domain/authentication_repository/authentication_repository.dart';
+import 'package:millima/utils/di/locator.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -33,8 +35,10 @@ class AuthenticationBloc
 
     try {
       await _authenticationRepository.login(event.request);
+      final user = await getIt.get<UserService>().getUser();
       emit(state.copyWith(
         status: AuthenticationStatus.authenticated,
+        user: user,
         isLoading: false,
       ));
     } catch (e) {
@@ -83,8 +87,10 @@ class AuthenticationBloc
 
       if (request != null) {
         await _authenticationRepository.socialLogin(request);
+        final user = await getIt.get<UserService>().getUser();
         emit(state.copyWith(
           status: AuthenticationStatus.authenticated,
+          user: user,
           isLoading: false,
         ));
       } else {
@@ -106,8 +112,10 @@ class AuthenticationBloc
 
     try {
       await _authenticationRepository.register(event.request);
+      final user = await getIt.get<UserService>().getUser();
       emit(state.copyWith(
         status: AuthenticationStatus.authenticated,
+        user: user,
         isLoading: false,
       ));
     } catch (e) {
@@ -146,10 +154,15 @@ class AuthenticationBloc
 
     try {
       final isLoggedIn = await _authenticationRepository.checkAuthStatus();
+      User? user;
+      if (isLoggedIn) {
+        user = await getIt.get<UserService>().getUser();
+      }
       emit(state.copyWith(
         status: isLoggedIn
             ? AuthenticationStatus.authenticated
             : AuthenticationStatus.unauthenticated,
+        user: user,
         isLoading: false,
       ));
     } catch (e) {
