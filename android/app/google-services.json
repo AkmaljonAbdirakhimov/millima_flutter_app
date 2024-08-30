@@ -39,10 +39,82 @@
               "client_type": 3
             },
             {
-              "client_id": "177101534878-g3eilhc9oaad6q8o7u2ksr0blgs6bg24.apps.googleusercontent.com",
+              "client_id": "177101534878-bu2fr7cr8k14p6v66ofhmggpr2ml1rn7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.millima"
+                "bundle_id": "uz.flutterwithakmaljon.millima"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177101534878:android:c29be51ceff58aaf4c6d8f",
+        "android_client_info": {
+          "package_name": "uz.flutterwithakmaljon.millima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177101534878-v1a75nipdhl29shjae0v8rvj98oe8kkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm28GXG8BT08V75z8U1awY-mG1nmYWXQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177101534878-v1a75nipdhl29shjae0v8rvj98oe8kkj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "177101534878-bu2fr7cr8k14p6v66ofhmggpr2ml1rn7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uz.flutterwithakmaljon.millima"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177101534878:android:e7860dd9f99266da4c6d8f",
+        "android_client_info": {
+          "package_name": "uz.flutterwithakmaljon.uz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177101534878-v1a75nipdhl29shjae0v8rvj98oe8kkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm28GXG8BT08V75z8U1awY-mG1nmYWXQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177101534878-v1a75nipdhl29shjae0v8rvj98oe8kkj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "177101534878-bu2fr7cr8k14p6v66ofhmggpr2ml1rn7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uz.flutterwithakmaljon.millima"
               }
             }
           ]

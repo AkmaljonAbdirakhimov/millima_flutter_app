@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDm28GXG8BT08V75z8U1awY-mG1nmYWXQc',
-    appId: '1:177101534878:android:9845ee8f779a08024c6d8f',
+    appId: '1:177101534878:android:c29be51ceff58aaf4c6d8f',
     messagingSenderId: '177101534878',
     projectId: 'millima-app',
     storageBucket: 'millima-app.appspot.com',
@@ -59,10 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDVG3HKMVwHTyEgZSWoC9MxEQI0m-dWVB0',
-    appId: '1:177101534878:ios:56d21d5bf8a7a12a4c6d8f',
+    appId: '1:177101534878:ios:c757bf5a36b56bb24c6d8f',
     messagingSenderId: '177101534878',
     projectId: 'millima-app',
     storageBucket: 'millima-app.appspot.com',
-    iosBundleId: 'com.example.millima',
+    androidClientId: '177101534878-vfb7puh5f4nlh5omhehlbjqrsv7ok7s2.apps.googleusercontent.com',
+    iosClientId: '177101534878-bu2fr7cr8k14p6v66ofhmggpr2ml1rn7.apps.googleusercontent.com',
+    iosBundleId: 'uz.flutterwithakmaljon.millima',
   );
+
 }
